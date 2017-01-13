@@ -12,7 +12,6 @@ describe 'sentry class' do
       }
 
       class { 'sentry' :
-        redis_host => "localhost",
       }
     EOS
   }
