@@ -1,28 +1,23 @@
 require 'spec_helper_acceptance'
 
-PUPPET_RUN_UNCHANGED = 0
-PUPPET_RUN_FAILED    = 1
-PUPPET_RUN_CHANGED   = 2
-
 describe 'sentry class' do
   let(:manifest) {
     <<-EOS
-      package { ['yum-utils', 'scl-utils', 'scl-utils-build', 'centos-release-scl']:
-        ensure => present;
-      }
-
-      class { 'sentry' :
-      }
+        class { 'python' :
+          version    => 'system',
+          pip        => 'present',
+          dev        => 'present',
+          virtualenv => 'present',
+        }
+      class { 'sentry': }
     EOS
   }
 
-  it 'should run without errors' do
-    result = apply_manifest(manifest, catch_failures: true)
-    expect(@result.exit_code).to eq PUPPET_RUN_CHANGED
+  it 'runs without errors' do
+    apply_manifest(manifest, catch_failures: true)
   end
 
-  it 'should run again without errors' do
-    result = apply_manifest(manifest, catch_failures: true)
-    expect(@result.exit_code).to eq PUPPET_RUN_UNCHANGED
+  it 'is idempotent' do
+    apply_manifest(manifest, catch_changes: true)
   end
 end

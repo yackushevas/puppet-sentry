@@ -1,7 +1,6 @@
-# puppet-sentry
+puppet-sentry
+======
 [![Build Status](https://travis-ci.org/covermymeds/puppet-sentry.svg?branch=master)](https://travis-ci.org/covermymeds/puppet-sentry)
-
-
 
 [Sentry](https://www.getsentry.com) is "a modern error logging and aggregation platform."  This module installs the [on-premise](https://docs.getsentry.com/on-premise/) open source version of Sentry. A Sentry administrative user, default Organization and default Team will be created.
 

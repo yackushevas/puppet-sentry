@@ -8,6 +8,7 @@ gem 'puppet', '>= 4'
 gem 'rspec-puppet', '>= 2.4'
 gem 'puppetlabs_spec_helper'
 gem 'puppet-lint'
+gem 'metadata-json-lint'
 
 group :acceptance do
   gem 'beaker-rspec'

@@ -4,4 +4,4 @@ require 'puppet-lint/tasks/puppet-lint'
 require 'beaker-rspec/rake_task'
 
 PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "vendor/**/*.pp"]
-task default: [:rspec, :lint]
+task default: [:spec, :rspec, :lint]

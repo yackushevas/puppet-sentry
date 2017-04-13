@@ -18,6 +18,15 @@ RSpec.configure do |c|
     hosts.each do |host|
       puppet_module_install(source: module_root, module_name: 'sentry')
       on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
+
+    # manifest = <<-EOS
+    #   class { 'python' :
+    #     version    => 'system',
+    #     pip        => 'present',
+    #     virtualenv => 'present',
+    #   }
+    # EOS
+    # apply_manifest_on(agents, manifest, catch_failures: false)
     end
   end
 end
